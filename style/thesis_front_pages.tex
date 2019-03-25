@@ -1,0 +1,216 @@
+
+%----------------------------------------------------------------
+% SLO: definiraj metapodatke za datoteko thesis_template.tex
+% ENG: define metadata for the file thesis_template.tex
+%----------------------------------------------------------------
+%----------------------------------------------------------------
+%	HYPERREF SETUP
+% SLO: ustrezno popravi e-mail
+% ENG: edit the e-mail accordingly
+%----------------------------------------------------------------
+\hypersetup{pdftitle={\ttitle}}
+\hypersetup{pdfsubject=\ttitleEn}
+\hypersetup{pdfauthor={\tauthor, \temail}}
+\hypersetup{pdfkeywords=\tkeywordsEn}
+
+%----------------------------------------------------------------
+% define medatata
+% SLO: ustrezno popravi e-mail
+% ENG: edit the e-mail accordingly
+%----------------------------------------------------------------
+\def\Title{\ttitle}
+\def\Author{\tauthor, \temail}
+\def\Subject{\ttitleEn}
+\def\Keywords{\tkeywordsEn}
+\def\Org{Univerza v Ljubljani, Fakulteta za računalništvo in informatiko}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \convertDate converts D:20080419103507+02'00' to 2008-04-19T10:35:07+02:00
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\convertDate{%
+    \getYear
+}
+
+{\catcode`\D=12
+ \gdef\getYear D:#1#2#3#4{\edef\xYear{#1#2#3#4}\getMonth}
+}
+\def\getMonth#1#2{\edef\xMonth{#1#2}\getDay}
+\def\getDay#1#2{\edef\xDay{#1#2}\getHour}
+\def\getHour#1#2{\edef\xHour{#1#2}\getMin}
+\def\getMin#1#2{\edef\xMin{#1#2}\getSec}
+\def\getSec#1#2{\edef\xSec{#1#2}\getTZh}
+\def\getTZh +#1#2{\edef\xTZh{#1#2}\getTZm}
+\def\getTZm '#1#2'{%
+    \edef\xTZm{#1#2}%
+    \edef\convDate{\xYear-\xMonth-\xDay T\xHour:\xMin:\xSec+\xTZh:\xTZm}%
+}
+
+\expandafter\convertDate\pdfcreationdate
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% get pdftex version string
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcount\countA
+\countA=\pdftexversion
+\advance \countA by -100
+\def\pdftexVersionStr{pdfTeX-1.\the\countA.\pdftexrevision}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% XMP data
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{xmpincl}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% pdfInfo
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pdfinfo{%
+    /Title    (\ttitle)
+    /Author   (\tauthor, \temail)
+    /Subject  (\ttitleEn)
+    /Keywords (\tkeywordsEn)
+    /ModDate  (\pdfcreationdate)
+    /Trapped  /False
+}
+
+%================================================================
+% SLO: razno
+% ENG: other
+%================================================================
+% SLO: nastavitev sklicevanj
+% ENG: hyper referencing setup
+\definecolor{black}{rgb}{0,0,0}
+\hypersetup{
+	colorlinks = true,
+	linkcolor = black,
+	citecolor = black,
+	urlcolor = black
+}
+
+%----------------------------------------------------------------
+% SLO: dodaj poti do datotek s slikami, tabelami, ...
+% ENG: add paths to files containing figures, tables, ...
+%----------------------------------------------------------------
+\graphicspath{
+	{./figures/}
+	{./tables/}
+}
+%----------------------------------------------------------------
+% SLO: moji paketi
+% ENG: my packages
+%----------------------------------------------------------------
+% ...
+%----------------------------------------------------------------
+% SLO: moji konstrukti
+% ENG: my constructs
+%----------------------------------------------------------------
+\newtheorem{izrek}{Izrek}[chapter]
+\newtheorem{trditev}{Trditev}[izrek]
+\newenvironment{dokaz}{\emph{Dokaz.}\ }{\hspace{\fill}{$\Box$}}
+
+
+%================================================================
+% SLO: začetne strani magistrskega dela
+% ENG: fist pages of the master's thesis
+%================================================================
+\begin{document}
+% SLO: prepreči težave s številkami strani v kazalu
+% ENG: prevents problems with the page numbers in the contents page
+\renewcommand{\thepage}{}
+
+%----------------------------------------------------------------
+% Language-dependent formatting
+%----------------------------------------------------------------
+\ifSLO
+    % SLO: definiraj slovensko besedo za kazalo
+    \renewcommand{\contentsname}{Kazalo}
+
+    % SLO: naslovnica (vstavi naslovnico (LaTeX kodo) iz datoteke pages/title.tex)
+    \input{front_pages/slo/naslovnica} \clearemptydoublepage
+    % SLO: avtorske pravice
+    \input{front_pages/slo/avtorske_pravice} \clearemptydoublepage
+    % SLO: izjava o avtorstvu (ni več del vezane izdaje, ločena oddaja)
+    % SLO: zahvala
+    \input{front_pages/slo/zahvala} \clearemptydoublepage
+    % SLO: posvetilo
+    \input{front_pages/slo/posvetilo} \clearemptydoublepage
+\else
+    % ENG: title page (insert the title page (LaTeX code) from the file pages/title.tex)
+    \input{front_pages/eng/title_page} \clearemptydoublepage
+    % ENG: copyright
+    \input{front_pages/eng/copyright} \clearemptydoublepage
+    % ENG: declaration of authorship (not part of paper edition, turn in separately)
+    % ENG: acknowledgements
+    \input{front_pages/eng/acknowledgments} \clearemptydoublepage
+    % ENG: dedication
+    \input{front_pages/eng/dedication} \clearemptydoublepage
+\fi
+
+%----------------------------------------------------------------
+% SLO: kazalo
+% ENG: contents
+%----------------------------------------------------------------
+\begingroup
+	\hypersetup{colorlinks=true,linkcolor=black}
+	\def\thepage{}
+	\tableofcontents{}
+	\clearemptydoublepage
+\endgroup
+
+
+\ifSLO
+    % SLO: seznam kratic
+    \input{front_pages/slo/kratice} \clearemptydoublepage
+    % SLO: glavne strani diplomskega dela
+\else
+    % ENG: list of acronmys
+    \input{front_pages/eng/acronyms} \clearemptydoublepage
+\fi
+
+\frontmatter
+\pagestyle{frontmatter}
+\setcounter{page}{1} %
+\renewcommand{\thepage}{}       % preprecimo težave s številkami strani v kazalu
+
+
+% include Slovenian abstract
+\input{front_pages/slo/povzetek}
+% include English abstract
+\input{front_pages/eng/abstract}
+
+% Include extended abstract [Razširjeni povzetek v slovenščini-- le za dela pisana v angleščini]
+\ifSLO
+\else
+  %  \cleardoublepage
+    \let\oldthesection=\thesection %Special section numbering for this chapter - remember default one
+    \let\oldthesubsection=\thesubsection
+    \renewcommand{\thesection}{\Roman{section}} %Special section numbering for this chapter
+    \renewcommand{\thesubsection}{\thesection.\Roman{subsection}}
+
+    % set roman page numbering
+    \pagenumbering{roman}
+    % set slovene language
+    \selectlanguage{slovene}
+    % insert extended abstract
+    \input{extended_abstract}
+
+    \let\thesection=\oldthesection % Restore default section numbering
+    \let\thesubsection=\oldthesubsection
+\fi
+
+%----------------------------------------------------------------
+% SLO: Preklopi izbrani jezik
+% ENG: Switch to chosen language
+%----------------------------------------------------------------
+\ifSLO
+    \selectlanguage{slovene} % Preklopi na slovenski jezik
+\else
+    \selectlanguage{english}  % Switch to english language
+\fi
+
+% SLO: vklopi številčenje poglavji, ponastavi številčenje strani in uporabi arabske številkami za številčenje strani
+% ENG: turns on chapter numbering, resets page numbering and uses arabic numerals for page numbers
+\mainmatter
+\pagestyle{mainmatter}
+\setcounter{page}{1}
+\pagestyle{fancy}

@@ -1,0 +1,274 @@
+%================================================================
+% SLO
+%----------------------------------------------------------------
+% datoteka: 	thesis_template.tex
+%
+% opis: 		predloga za pisanje diplomskega dela v formatu LaTeX na
+% 				Univerza v Ljubljani, Fakulteti za računalništvo in informatiko
+%
+% pripravili: 	Matej Kristan, Zoran Bosnić, Andrej Čopar,
+%			  	po začetni predlogi Gašperja Fijavža
+%
+% popravil: 	Domen Rački, Jaka Cikač, Matej Kristan
+%
+% verzija: 		30. september 2016 (dodan razširjeni povzetek)
+%================================================================
+
+
+%================================================================
+% SLO: definiraj strukturo dokumenta
+% ENG: define file structure
+%================================================================
+\documentclass[a4paper, 12pt]{book}
+
+%================================================================
+% SLO: Odkomentiraj "\SLOtrue " za izbiro slovenskega jezika
+% ENG: Uncomment "\SLOfalse" to chose English languagge
+%================================================================
+\newif\ifSLO
+% switch language
+
+%\SLOtrue % Enables Slovenian language
+\SLOfalse  % Enables English language
+
+%================================================================
+% SLO: vključi oblikovanje in pakete
+% ENG: include design and packages
+%================================================================
+\input{style/thesis_style}
+
+%----------------------------------------------------------------
+% |||||||||||||||||||||| USTREZNO POPRAVI |||||||||||||||||||||||
+% |||||||||||||||||||||| EDIT ACCORDINGLY |||||||||||||||||||||||
+%----------------------------------------------------------------
+\newcommand{\ttitle}{Vzorec zaključnega dela}
+\newcommand{\ttitleEn}{Thesis template}
+\newcommand{\tsubject}{\ttitle}
+\newcommand{\tsubjectEn}{\ttitleEn}
+\newcommand{\tauthor}{Mojster Jaka}
+\newcommand{\temail}{mojster.jaka@gmai.com}
+\newcommand{\myyear}{2016}
+\newcommand{\tkeywords}{računalnik, računalnik, računalnik}
+\newcommand{\tkeywordsEn}{computer, computer, computer}
+\newcommand{\mysupervisor}{doc.~dr.\ Peter Klepec}
+\newcommand{\mycosupervisor}{akad.~prof.~dr.\ Martin Krpan}
+
+% include formatted front pages
+\input{style/thesis_front_pages}
+
+%================================================================
+% ENG: main pages of the thesis
+%================================================================
+
+%----------------------------------------------------------------
+% Poglavje (Chapter) 1
+%----------------------------------------------------------------
+\chapter{Uvod}
+\label{ch:uvod}
+
+Datoteka {\tt magistrska\_naloga.tex} na kratko opisuje, kako se pisanja magistrskega dela lotimo z uporabo programskega pateka \LaTeX. V tem dokumentu bomo predstavili nekaj njegovih prednosti in hib. Kar se slednjih tiče, mi pride na misel ena sama. Ko se srečamo z njim, nam izgleda kot kislo jabolko, nismo prepričani, da bi želeli vanj ugrizniti. Lahko pa z njim pripravimo odličen zavitek ali pa pridemo na okus.
+
+V Poglavju~\ref{ch:uvod} bomo na hitro spoznali besedilne konstrukte kot so izreki, enačbe in dokazi. Naučili se bomo, kako se na njih sklicujemo. V Poglavju~\ref{ch:sklicevanje} se bomo srečali s sklicevanjem na besedilne konstrukte. Poglavje~\ref{ch:plovke} bo predstavilo vključevanje plovk: slik in tabel. V Poglavju~\ref{ch3} se bomo srečali s sklicevanjem na literaturo.
+Sledil bo samo še zaključek.
+
+Bodite pozorni, da se v glavni mapi nahajata še datoteki \verb+ declaration.tex+ in \verb+ izjava.tex+. Ti datoteki se ločeno prevedeta, ju podpišete in oddate v referat ločeno od magistrske naloge.
+
+%----------------------------------------------------------------
+% Poglavje (Chapter) 2
+%----------------------------------------------------------------
+\chapter{Sklicevanje na besedilne konstrukte}
+\label{ch:sklicevanje}
+
+Matematična ali popolna indukcija je eno prvih orodij, ki jih spoznamo za dokazovanje trditev pri matematičnih predmetih.
+\begin{izrek}
+\label{iz:1}
+Za vsako naravno število $n$ velja
+\begin{equation}
+n < 2^n.
+\label{eq:1}
+\end{equation}
+\end{izrek}
+\begin{dokaz}
+Dokazovanje z indukcijo zahteva, da neenakost~\eqref{eq:1} najprej preverimo za najmanjše naravno število --- $0$. Res, ker je $0 < 1 = 2^0$, je neenačba~\eqref{eq:1} za $n=0$ izpolnjena.
+
+Sledi indukcijski korak. S predpostavko, da je neenakost~\eqref{eq:1} veljavna pri nekem naravnem številu $n$, je potrebno pokazati, da je ista neenakost v veljavi tudi pri njegovem nasledniku --- naravnem številu $n+1$. Izračun zapišemo s tremi vrsticami, ki jih končamo s piko, saj do del tega stavka:
+\begin{align}
+n+1 &< 2^n + 1,  \label{eq:2}\\
+    &\le 2^n + 2^n, \label{eq:3}\\
+    &= 2^{n+1}. \nonumber
+\end{align}
+Neenakost~\eqref{eq:2} je posledica indukcijske predpostavke, neenakost~\eqref{eq:3} pa enostavno dejstvo, da je za vsako naravno število $n$ izraz $2^n$ vsaj tako velik kot 1. S tem je dokaz Izreka~\ref{iz:1} zaključen.
+\end{dokaz}
+
+Opazimo, da je \LaTeX\ številko izreka podredil številki poglavja.
+
+
+
+%----------------------------------------------------------------
+% Poglavje (Chapter) 3
+%----------------------------------------------------------------
+\chapter{Plovke: slike in tabele}
+\label{ch:plovke}
+
+Slike in daljše tabele praviloma vključujemo v dokument kot plovke. Pozicija plovke v končnem izdelku ni pogojena s tekom besedila, temveč z izgledom strani. \LaTeX\ bo skušal plovko postaviti samostojno, praviloma na vrh strani, na kateri se na takšno plovko prvič sklicujemo. Pri tem pa bo na vsako stran končnega izdelka želel postaviti tudi sorazmerno velik del besedila. V skrajnem primeru, če imamo res preveč plovk, se bo odločil za stran popolnoma zapolnjeno s plovkami.
+
+\section{Formati slik}
+Bitne slike, vektorske slike, kakršnekoli slike, z \LaTeX{}om lahko vključimo vse.
+Slika~\ref{pic1} je v {\tt .pdf} formatu.
+\begin{figure}
+    \begin{center}
+        \includegraphics[width=10cm]{pic1.pdf}
+    \end{center}
+\caption{Herschelov graf, vektorska grafika.}
+\label{pic1}
+\end{figure}
+Pa res lahko vključimo slike katerihkoli formatov? Žal ne. Programski paket \LaTeX\ lahko uporabljamo v več dialektih. Ukaz {\tt latex} ne mara vključenih slik v formatu Portable Document Format {\tt .pdf}, ukaz {\tt pdflatex} pa ne prebavi slik v Encapsulated Postscript Formatu {\tt .eps}.
+Strnjeno v Tabeli~\ref{tbl:1}.
+
+\begin{table}
+\caption{}
+    \begin{center}
+        \begin{tabular}{l|ccc}
+            ukaz/format & {\tt .pdf} & {\tt .eps} & ostali formati \\ \hline
+                        {\tt pdflatex} & da & ne & da \\
+                        {\tt latex}   & ne & da  & da
+        \end{tabular}
+    \end{center}
+\label{tbl:1}
+\end{table}
+
+Nasvet? Odločite se za uporabo ukaza {\tt pdflatex}. Vaš izdelek bo brez vmesnih stopenj na voljo v {.pdf} formatu in ga lahko odnesete v vsako tiskarno. Če morate na vsak način vključiti sliko, ki jo imate v {\tt .eps} formatu, jo vnaprej pretvorite v alternativni format, denimo {\tt .pdf}.
+
+Včasih se da v okolju za uporabo programskega paketa \LaTeX\ nastaviti na kakšen način bomo prebavljali vhodne dokumente. Spustni meni na Sliki~\ref{pic2} odkriva uporabo \LaTeX{}a v njegovi pdf inkarnaciji --- {\tt pdflatex}.
+\begin{figure}
+\begin{center}
+\includegraphics[width=10cm]{pic2.png}
+\end{center}
+\caption{Kateri dialekt uporabljati?}
+\label{pic2}
+\end{figure}
+Vključena Slika~\ref{pic2} je seveda bitna.
+
+
+
+%----------------------------------------------------------------
+% Poglavje (Chapter) 4
+%----------------------------------------------------------------
+\chapter{Razno}
+\label{ch:razno}
+
+\section{Notacije}
+\label{sec:notacije}
+
+Za notacijo spremenljivk ter skalarjev uporabimo običajno notacijo, t.j., spremenljivka $x$ in skalar $a$. Pri notaciji matrik ter vektorjev pa se poslužujemo krepega fonta. Torej, matrika $\boldsymbol{A}$ ter vektor $\boldsymbol{v}$,
+\begin{equation}
+\boldsymbol{A} = \begin{bmatrix}
+       a_{11} & a_{12} & \dots & a_{1q}  \\
+       a_{21} & a_{22} & \dots & a_{2q}  \\
+       \vdots  \\
+       a_{p1} & a_{p2} & \dots & a_{pq}  \\
+     \end{bmatrix}, \quad
+     \boldsymbol{v} = \begin{bmatrix}
+       x_1  \\
+       x_2  \\
+       \vdots  \\
+       x_q  \\
+     \end{bmatrix}. \nonumber
+\end{equation}
+
+%----------------------------------------------------------------
+\section{Lepe tabele in psevdokoda}
+\label{sec:psevdokoda}
+
+Psevdokoda~\ref{alg:primer} prikazuje primer delovanja genetskega algoritma, medtem ko Tabela~\ref{tab:params} prikazuje primer lepe tabele brez vertikalnih črt.
+
+\begin{algorithm}
+\caption{Psevdokoda genetskega algoritma}
+\label{alg:primer}
+\begin{algorithmic}[1]
+\footnotesize
+\STATE $t \gets 0$
+\STATE $InitPopulation[P(t)] \gets$ inicializiraj populacijo
+\STATE $EvalPopulation[P(t)] \gets$ evaluiraj populacijo
+\REPEAT
+\STATE $P'(t) \gets Variation[P(t)] \gets $ generiraj novo populacijo
+\STATE $EvalPopulation[P'(t)] \gets$ evaluiraj novo populacijo
+\STATE $P(t+1) \gets ApplyGeneticOperators[P'(t) \in Q]$
+\STATE $t \gets t+1$
+\UNTIL{prekinitev}
+\IF{rezultat dovolj dober}
+\STATE shrani rezultat
+\ENDIF
+\end{algorithmic}
+\end{algorithm}
+
+%---------------------------------------------------------------
+\begin{table}
+\caption{Primer enostavne tabele.}
+\centering
+\scalebox{0.82}{
+\begin{tabular}{c c c}
+ \toprule
+ Ime & Vrednost & Opis \\
+ \midrule
+ \textit{ $a$ } & 0.03 &  skalar \\
+ \textit{ $x$ } & -1 & spremenljivka \\
+ \bottomrule
+\end{tabular}
+}
+\label{tab:params}
+\end{table}
+
+%----------------------------------------------------------------
+% Poglavje (Chapter) 5
+%----------------------------------------------------------------
+\chapter{Kaj pa literatura?}
+\label{ch3}
+Kot smo omenili že v uvodu, je pravi način za citiranje literature uporaba \BibTeX{}a~\cite{ubi}.
+Programski paket \LaTeX je prvotno predstavljen v priročniku~\cite{Lamport} in je v resnici nadgradnja sistema \TeX\ avtorja Donalda Knutha, znanega po denimo, če izpustim njegovo umetnost programiranja, Knuth-Bendixovem algoritmu~\cite{Knuth}.
+
+Vsem raziskovalcem s področja računalništva pa svetujem v branje mnenje L.\ Fortnowa~\cite{Fortnow}.
+
+%----------------------------------------------------------------
+% Poglavje (Chapter) 6
+%----------------------------------------------------------------
+\chapter{Sklepne ugotovitve}
+Izbira \LaTeX\ ali ne \LaTeX\ je seveda prepuščena vam samim. Res je, da so prvi koraki v \LaTeX{}u težavni. Ta dokument naj vam služi kot začetna opora pri hoji.
+
+% ---------------------------------------------------------------
+% Appendix
+% ---------------------------------------------------------------
+\appendix
+%\addcontentsline{toc}{chapter}{Razširjeni povzetek}
+\chapter{Title of the appendix 1}
+
+Example of the appendix.
+
+%----------------------------------------------------------------
+% SLO: bibliografija
+% ENG: bibliography
+%----------------------------------------------------------------
+\bibliographystyle{elsarticle-num}
+
+%----------------------------------------------------------------
+% SLO: odkomentiraj za uporabo zunanje datoteke .bib (ne pozabi je potem prevesti!)
+% ENG: uncomment to use .bib file (don't forget to compile it!)
+%----------------------------------------------------------------
+%\bibliography{bibliography}
+
+%----------------------------------------------------------------
+% SLO: zakomentiraj spodnji del, če uporabljaš zunanjo .bib datoteko
+% ENG: comment the part below if using the .bib file
+%----------------------------------------------------------------
+
+\begin{thebibliography}{99}
+\bibitem{Fortnow} L.\ Fortnow, ``Viewpoint: Time for computer science to grow up'',
+{\it Communications of the ACM}, št.\ 52, zv.\ 8, str.\ 33--35, 2009.
+\bibitem{Knuth} D.\ E.\ Knuth, P. Bendix. ``Simple word problems in universal algebras'', v zborniku: Computational Problems in Abstract Algebra (ur. J. Leech), 1970, str. 263--297.
+\bibitem{Lamport} L.\ Lamport. {\it LaTEX: A Document Preparation System}. Addison-Wesley, 1986.
+\bibitem{ubi} O.\ Patashnik (1998) \BibTeX{}ing.
+Dostopno na: \url{http://ftp.univie.ac.at/packages/tex/biblio/bibtex/contrib/doc/btxdoc.pdf}
+\bibitem{licence} licence-cc.pdf. Dostopno na: \url{https://ucilnica.fri.uni-lj.si/course/view.php?id=274}
+\end{thebibliography}
+
+\end{document}

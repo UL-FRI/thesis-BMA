@@ -1,0 +1,108 @@
+%----------------------------------------------------------------
+% SLO: LaTeX paketi
+% ENG: LateX packages
+%----------------------------------------------------------------
+% SLO: omogoča uporabo slovenskih (latinskih) črk kodiranih v formatu UTF-8
+% ENG: enables the use of slovene (latin) caracters encoded in the UFT-8 format
+\usepackage[utf8x]{inputenc}
+%\inputencoding{utf8} 
+% SLO: naloži, med drugim, slovenske delilne vzorce
+% ENG: loads, among others, slovene dividing patterns
+\usepackage[slovene,english]{babel} 
+% SLO: poskrbi za postavitev strani
+% ENG: takes care of the page layout
+\usepackage{fancyhdr}
+% SLO: za vlaganje slik različnih formatov
+% ENG: for loading figures of different formats
+\usepackage{graphicx}
+\usepackage{caption}
+\captionsetup[figure]{labelfont=bf} % SLO: napis "Slika #" v krepkem tisku
+									% ENG: wirte "Figure #" caption in bold
+\captionsetup[table]{labelfont=bf} % SLO: napis "Tabela #" v krepkem tisku
+								   % ENG: wirte "Table #" caption in bold
+% SLO: za pisanje psevdokode
+% ENG: for writing pseudocode
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\floatname{algorithm}{\footnotesize Algorithm} % SLO: napis "Algoritem #" v krepkem tisku
+											   % ENG: write "Algorithm #" caption in bold
+% SLO: poveže reference slik/tabel in slike/tabele znotraj dokumenta
+% ENG: links image/table references with the images/tables within the document
+\usepackage{hyperref}
+% SLO: pri kliku na referenco slike/tabele se postavi na vrh slike/tabele
+% ENG: when clicking the image/table reference, position the focus on top of the image/table
+\usepackage[all]{hypcap}
+% SLO: omogoča, med drugim, definicjo in uporebo barve
+% ENG: enables, among others, the definition and use of colors
+\usepackage{xcolor}
+%----------------------------------------------------------------
+% SLO: dodatni paketi
+% ENG: additional packages
+%----------------------------------------------------------------
+% SLO: omogoča večjo manipulacijo nad tabelami
+% ENG: allows for greater manipulation of tables
+\usepackage{booktabs}
+% SLO: naloži dodatne simbole
+% ENG: loads additional symbols
+\usepackage{amssymb} 
+% SLO: omogoča, med drugim, sklicevanje na formule z eqref
+% ENG: enables, among others, equation referencing with eqref
+\usepackage{amsmath}
+% SLO: omogoča komentiranje večjega dela teksta
+% ENG: enables the commenting of larger text parts
+\usepackage{verbatim}
+% SLO: omogoča rotacijo PDF strani v ležeč položaj
+% ENG: enables the rotation of a PDF page to landscape
+\usepackage{pdflscape}
+% SLO: omogoča barvanje vrstic in stolpcev tabel
+% ENG: enables coloring of table rows and columns
+\usepackage{colortbl}
+\usepackage{url}
+
+
+
+%================================================================
+% SLO: nastavitve dokumenta
+% ENG: document properties
+%================================================================
+% SLO: prilagoditev robov za tisk
+% ENG: margin adjustments for printing
+\addtolength{\marginparwidth}{-20pt}
+\addtolength{\oddsidemargin}{40pt}
+\addtolength{\evensidemargin}{-40pt}
+% SLO: razmik med vrsticami
+% ENG: line spacing
+\renewcommand{\baselinestretch}{1.3} 
+% SLO: postavitev strani
+% ENG: page layout
+\renewcommand{\chaptermark}[1]{\markboth{\MakeUppercase{\thechapter.\ #1}}{}} 
+\renewcommand{\sectionmark}[1]{\markright{\MakeUppercase{\thesection.\ #1}}} 
+\renewcommand{\headrulewidth}{0.5pt} % Header rule
+\renewcommand{\footrulewidth}{0pt} % Footer rule
+%
+\fancypagestyle{frontmatter}{%
+	\fancyhf{} % Clear all headers and footers first
+	\fancyhead[LE, RO]{\sl \thepage} 
+	%\fancyhead[LO]{\sl \rightmark} 
+	%\fancyhead[RE]{\sl \leftmark}
+}
+\fancypagestyle{mainmatter}{%
+  	\fancyhf{} % Clear all headers and footers first
+	\fancyhead[LE,RO]{\sl \thepage} 
+	\fancyhead[LO]{\sl \rightmark} 
+	\fancyhead[RE]{\sl \leftmark}
+}
+% SLO: font za ime avtorja
+% ENG: font for author name
+\newcommand{\authorfont}{\Large}
+% SLO: font za naslov diplomskega dela
+% ENG: font for thesis title
+\newcommand{\titlefont}{\LARGE\bf}
+% SLO: globina kazala
+% ENG: content depth
+\setcounter{tocdepth}{1}
+% SLO: definiraj ukaz za prazno stran
+% ENG: define the command for empty page
+\newcommand{\clearemptydoublepage}{\newpage{\pagestyle{empty}\cleardoublepage}}
+
+\newcommand{\BibTeX}{{\sc Bib}\TeX}
