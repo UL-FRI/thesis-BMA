@@ -125,7 +125,7 @@
     % SLO: definiraj slovensko besedo za kazalo
     \renewcommand{\contentsname}{Kazalo}
 
-    % SLO: naslovnica (vstavi naslovnico (LaTeX kodo) iz datoteke pages/title.tex)
+    % SLO: naslovnica  
     \input{front_pages/slo/naslovnica} \clearemptydoublepage
     % SLO: avtorske pravice
     \input{front_pages/slo/avtorske_pravice} \clearemptydoublepage
@@ -135,8 +135,10 @@
     % SLO: posvetilo
     \input{front_pages/slo/posvetilo} \clearemptydoublepage
 \else
-    % ENG: title page (insert the title page (LaTeX code) from the file pages/title.tex)
+    % ENG: title page ENG
     \input{front_pages/eng/title_page} \clearemptydoublepage
+    % ENG: title page SLO
+    \input{front_pages/slo/naslovnica} \clearemptydoublepage
     % ENG: copyright
     \input{front_pages/eng/copyright} \clearemptydoublepage
     % ENG: declaration of authorship (not part of paper edition, turn in separately)
@@ -171,16 +173,19 @@
 \pagestyle{frontmatter}
 \setcounter{page}{1} %
 \renewcommand{\thepage}{}       % preprecimo težave s številkami strani v kazalu
-
-
-% include Slovenian abstract
-\input{front_pages/slo/povzetek}
-% include English abstract
-\input{front_pages/eng/abstract}
-
+ 
 % Include extended abstract [Razširjeni povzetek v slovenščini-- le za dela pisana v angleščini]
 \ifSLO
+    % include Slovenian abstract
+    \input{front_pages/slo/povzetek}
+    % include English abstract
+    \input{front_pages/eng/abstract}
 \else
+    % include English abstract
+    \input{front_pages/eng/abstract}
+    % include Slovenian abstract
+    \input{front_pages/slo/povzetek}
+  
   %  \cleardoublepage
     \let\oldthesection=\thesection %Special section numbering for this chapter - remember default one
     \let\oldthesubsection=\thesubsection
