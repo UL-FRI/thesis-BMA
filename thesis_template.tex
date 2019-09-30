@@ -26,10 +26,20 @@
 % ENG: Uncomment "\SLOfalse" to chose English languagge
 %================================================================
 \newif\ifSLO
+\newif\ifCOURSEEXIST
+\newif\ifCOURSECS
+ 
 % switch language
-
 \SLOtrue % Enables Slovenian language
 %\SLOfalse  % Enables English language
+
+% switch on if your program is divided into courses CS and DS, otherwise leave it false
+% \COURSEEXISTfalse
+\COURSEEXISTtrue
+
+% default course name is "Computer science" if your course name is "Data science", set the following switch to false
+\COURSECStrue % uncomment if the thesis is from course "Information science"
+%\COURSECSfalse % uncomment if the thesis is from course "Data Science"
 
 %================================================================
 % SLO: vključi oblikovanje in pakete

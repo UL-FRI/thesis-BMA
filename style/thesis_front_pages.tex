@@ -88,12 +88,12 @@
 }
 
 %----------------------------------------------------------------
-% SLO: dodaj poti do datotek s slikami, tabelami, ...
-% ENG: add paths to files containing figures, tables, ...
+% SLO: dodaj poti do datotek s slikami
+% ENG: add paths to files containing figures 
 %----------------------------------------------------------------
 \graphicspath{
-	{./figures/}
-	{./tables/}
+	{figures/}
+	{tables/}
 }
 %----------------------------------------------------------------
 % SLO: moji paketi
@@ -124,8 +124,8 @@
 \ifSLO
     % SLO: definiraj slovensko besedo za kazalo
     \renewcommand{\contentsname}{Kazalo}
-
-    % SLO: naslovnica  
+    
+    % SLO: naslovnica
     \input{front_pages/slo/naslovnica} \clearemptydoublepage
     % SLO: avtorske pravice
     \input{front_pages/slo/avtorske_pravice} \clearemptydoublepage
@@ -135,6 +135,7 @@
     % SLO: posvetilo
     \input{front_pages/slo/posvetilo} \clearemptydoublepage
 \else
+
     % ENG: title page ENG
     \input{front_pages/eng/title_page} \clearemptydoublepage
     % ENG: title page SLO
@@ -173,7 +174,7 @@
 \pagestyle{frontmatter}
 \setcounter{page}{1} %
 \renewcommand{\thepage}{}       % preprecimo težave s številkami strani v kazalu
- 
+
 % Include extended abstract [Razširjeni povzetek v slovenščini-- le za dela pisana v angleščini]
 \ifSLO
     % include Slovenian abstract
@@ -185,7 +186,7 @@
     \input{front_pages/eng/abstract}
     % include Slovenian abstract
     \input{front_pages/slo/povzetek}
-  
+
   %  \cleardoublepage
     \let\oldthesection=\thesection %Special section numbering for this chapter - remember default one
     \let\oldthesubsection=\thesubsection
