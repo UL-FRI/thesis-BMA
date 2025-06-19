@@ -9,10 +9,10 @@ xmlns:pdfaid="http://www.aiim.org/pdfa/ns/id/">
 </rdf:Description> 
 <rdf:Description rdf:about="" 
 xmlns:xap="http://ns.adobe.com/xap/1.0/"> 
-<xap:CreateDate>2025-06-19T13:50:07+02:00</xap:CreateDate> 
+<xap:CreateDate>2025-06-19T15:10:06+02:00</xap:CreateDate> 
 <xap:CreatorTool>TeX</xap:CreatorTool> 
-<xap:ModifyDate>2025-06-19T13:50:07+02:00</xap:ModifyDate> 
-<xap:MetadataDate>2025-06-19T13:50:07+02:00</xap:MetadataDate> 
+<xap:ModifyDate>2025-06-19T15:10:06+02:00</xap:ModifyDate> 
+<xap:MetadataDate>2025-06-19T15:10:06+02:00</xap:MetadataDate> 
 </rdf:Description> 
 <rdf:Description rdf:about="" 
 xmlns:pdfx="http://ns.adobe.com/pdfx/1.3/"> 
