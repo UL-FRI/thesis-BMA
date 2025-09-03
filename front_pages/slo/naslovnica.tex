@@ -2,10 +2,9 @@
 
 \ifPROGRAMEMAI
  
- 
  \thispagestyle{empty}
 	\begin{center}
-		\noindent\makebox[\linewidth]{\includegraphics[width=\linewidth]{style/Uni_logos.pdf}}
+		%\noindent\makebox[\linewidth]{\includegraphics[width=\linewidth]{style/Uni_logos.pdf}}
 
     	\vskip 7em
     	{\authorfont \tauthor}
@@ -21,7 +20,9 @@
    {\large {Univerza v Ljubljani}\par}
    {\large {Fakulteta za računalništvo in informatiko}\par}
    {\large {Mentor}: \mysupervisor \par}
-   {\large {Somentor}:  \mycosupervisor \par}
+   \ifdefined\mycosupervisor
+	   {\large {Somentor}:  \mycosupervisor \par}
+   \fi
 \else
 % ----------------
 \ifTRACKEXIST
@@ -45,7 +46,9 @@
         }\par}
         \vfill\null
         {\large \textsc{Mentor}: \mysupervisor \par}
-   	    {\large \textsc{Somentor}: \mycosupervisor \par}
+		\ifdefined\mycosupervisor
+			{\large \textsc{Somentor}: \mycosupervisor \par}
+		\fi
         {\vskip 2em \large Ljubljana, \myyear \par}
    \end{center}
 \else
@@ -63,7 +66,9 @@
         }\par}
         \vfill\null
         {\large \textsc{Mentor}: \mysupervisor \par}
-   	    {\large \textsc{Somentor}: \mycosupervisor \par}
+		\ifdefined\mycosupervisor
+			{\large \textsc{Somentor}: \mycosupervisor \par}
+		\fi
         {\vskip 2em \large Ljubljana, \myyear \par}
    \end{center}
 \fi 

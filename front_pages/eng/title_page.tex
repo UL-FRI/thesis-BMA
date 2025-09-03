@@ -1,11 +1,13 @@
-% select the course title if it exist
 
 \ifPROGRAMEMAI
+ 
+ % in case of EMAI program, an additional front page will be generated
+ \input{front_pages/EMAI_title_page}
  
  
  \thispagestyle{empty}
 	\begin{center}
-		\noindent\makebox[\linewidth]{\includegraphics[width=\linewidth]{style/Uni_logos.pdf}}
+		%\noindent\makebox[\linewidth]{\includegraphics[width=\linewidth]{style/Uni_logos.pdf}}
 
     	\vskip 7em
     	{\authorfont \tauthor}
@@ -21,7 +23,10 @@
    {\large {University of Ljubljana}\par}
    {\large {Faculty of Computer and Information Science}\par}
    {\large {Mentor}: \mysupervisor \par}
-   {\large {Co-mentor}:  \mycosupervisor \par}
+   \ifdefined\mycosupervisor
+		{\large {Co-mentor}:  \mycosupervisor \par}
+	\fi
+	
 \else
 % ----------------
 \ifTRACKEXIST
@@ -44,7 +49,9 @@
         }\par}
         \vfill\null
         {\large \textsc{Supervisor}: \mysupervisor \par}
-   	    {\large \textsc{Co-supervisor}:  \mycosupervisor \par}
+		\ifdefined\mycosupervisor
+			{\large \textsc{Co-supervisor}:  \mycosupervisor \par}
+		\fi
         {\vskip 2em \large Ljubljana, \myyear \par}
    \end{center}
 \else
@@ -62,7 +69,9 @@
         }\par}
         \vfill\null
         {\large \textsc{Supervisor}: \mysupervisor \par}
-   	    {\large \textsc{Co-supervisor}:  \mycosupervisor \par}
+		\ifdefined\mycosupervisor
+			{\large \textsc{Co-supervisor}:  \mycosupervisor \par}
+		\fi
         {\vskip 2em \large Ljubljana, \myyear \par}
     \end{center}
 \fi
